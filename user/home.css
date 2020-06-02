@@ -1,0 +1,39 @@
+body {
+  background-color: #b3c1d1;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
+}
+
+.spacer {
+    width: 80%;
+}
+
+h3 {
+  color: #142a50;
+  font-size: 30px;
+  font-weight: bold; 
+  margin-bottom: 60px;
+}
+
+.Btn {
+    padding: 20px 40px;
+    font-size: 30px;
+}
+
+@media only screen and (min-width: 769px) {
+    main {
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 0 20px;
+    }
+    .spacer {
+        width: auto;
+    }
+}

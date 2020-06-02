@@ -1,0 +1,144 @@
+/* this file is loaded by index.html and styles the page */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  line-height: 1.5em;
+  --splash-color: #365c85;
+  --white-color: #ffffff;
+  background-color: var(--splash-color);
+}
+
+.app-logo {
+  margin-top: 20px;
+  margin-right: 40px;
+  position: absolute;
+  top:0;
+  right: 0;
+  width: auto;
+  height: 60px;
+  cursor: pointer;
+  
+}
+
+#errorMsg {
+    font-family: 'Montserrat', sans-serif;
+    position: absolute;
+    display: none;
+    top: 0;
+    right: 0;
+    padding: 10px 20px;
+    color: red;
+    background-color: transparent;
+}
+
+.top-left {
+    height: 50vh;
+}
+
+.bottom-right {
+    height: 50vh;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+.fullImage {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+img{
+    display: block;
+}
+
+button {
+    border: 0;
+    background-color: transparent;
+    font-size: 20px;
+}
+
+button:focus, button:active {
+    outline: none;
+}
+
+a {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+#loginSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#loginBtn {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+}
+
+#googleLogo {
+   height: 50px;
+}
+
+.Btn {
+    border-radius: 10px;
+    padding: 10px;
+    background-color: var(--white-color);
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.foundBtn {
+  color: white;
+  background-color: #daab27;
+}
+
+.lostBtn {
+  color: white;
+  background-color: #142a50;
+}
+
+footer {
+  margin-top: 3em;
+  padding-top: 1.5em;
+  border-top: 1px solid lightgrey;
+}
+
+
+@media only screen and (max-width: 600px) {
+    #lostFoundLogo {
+        width: 80%;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    #lostFoundLogo {
+        width: 80%;
+    }
+
+    main {
+        flex-direction: row;
+    }
+
+    .top-left {
+        height: 100vh;
+        width: 50vw;
+    }
+    
+    .bottom-right {
+        height: 100vh;
+        width: 50vw;
+    }
+
+}

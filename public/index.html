@@ -1,0 +1,47 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>UCD Lost and Found</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A cool thing made with Glitch" />
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon" />
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/reset.css" />
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- import the webpage's client-side javascript file -->
+    <script src="/script.js" defer></script>
+</head>
+
+<body>
+    <main>
+        <div id="errorMsg"></div>
+        <div class="top-left">
+            <img class="fullImage"
+                src="https://cdn.glitch.com/2d7f5fac-5ae5-4bf1-a07d-363858a92068%2FShields-Library.jpg?v=1589952643612"
+                alt="Shields Library">
+        </div>
+        <div class="bottom-right" id="loginSection">
+            <img id="lostFoundLogo"
+                src="https://cdn.glitch.com/2d7f5fac-5ae5-4bf1-a07d-363858a92068%2FLogo.png?v=1589952362924"
+                alt="UC Davis Lost and Found">
+
+            <a id="loginBtn" class="Btn" href="auth/google">
+                <img id="googleLogo"
+                    src="https://cdn.glitch.com/2d7f5fac-5ae5-4bf1-a07d-363858a92068%2Fgoogle.jpg?v=1589953018356"
+                    alt="Login With Google">
+                <button class="centered" id="loginStartButton">
+                    Login with Google
+                </button>
+            </a>
+        </div>
+    </main>
+</body>
+
+</html>

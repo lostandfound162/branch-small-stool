@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login-protected homepage</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="/style.css">
+    <!--  extra protected stylesheet for this page -->
+    <link rel="stylesheet" href="/user/form.css">
+    <script src="/user/seekerSearch.js" defer></script>
+</head>
+
+<!-- <h1>
+  This is our protected homepage!
+</h1> -->
+
+<body id="SeekerPage">
+    <main>
+        <div id="errorMsg"></div>
+
+
+        <img class="app-logo"
+            src="https://cdn.glitch.com/2d7f5fac-5ae5-4bf1-a07d-363858a92068%2FLogo.png?v=1589952362924"
+            alt="UC Davis Lost and Found" onclick="window.location.href = './home.html'">
+
+        <div id="searchwrap">
+            <h1>Or search for existing requests</h1>
+
+            <a>
+                <div class="searchLine">
+                    <input type="text" id="search" name="search">
+                    <img class="search-logo"
+                        src="https://cdn.glitch.com/2d7f5fac-5ae5-4bf1-a07d-363858a92068%2Fsearch-solid.svg?v=1589952367973"
+                        alt="UC Davis Seeker Search">
+                </div>
+            </a>
+        </div>
+
+        <div class="formBook">
+            <div id="pg1" class="formPage">
+                <form>
+                    <!-- <label for="title">Title</label>
+                    <input type="text" id="title" name="title"> -->
+
+                    <label for="foundtime">Date & Time</label>
+                    <span>
+                        <input type="date" id="postdate1" name="postdate1" value="2020-05-21">
+                        <input type="time" id="posttime1" name="posttime1" value="12:00">
+                        <span>to</span>
+                        <input type="date" id="postdate2" name="postdate2" value="2020-05-21">
+                        <input type="time" id="posttime2" name="posttime2" value="12:00">
+                    </span>
+                    <br/>
+
+                    <label for="categories">Category</label>
+                    <select id="categories" name="categories">
+                        <option value="Select Category">Select Category</option>
+                        <option value="Phone">Phone</option>
+                        <option value="Watch">Watch</option>
+                        <option value="Wallet">Wallet</option>
+                        <option value="Bag">Bag</option>
+                        <option value="Notebook">Notebook</option>
+                        <option value="Textbook">Textbook</option>
+                        <option value="Keys">Keys</option>
+                        <option value="Time">Time</option>
+                        <option value="Mind">Mind</option>
+                        <option value="Sanity">Sanity</option>
+                        <option value="Canvas Password">Canvas Password</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <br/>
+                    
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" placeholder="Search Location..." onkeypress="return searchKeyPress(event);">
+                    <input type="button" id="fakeBtn" style="display: none;" value="Search" onclick="search();" />
+                    <br/>
+                  
+                     <!--  TEST CODE STARTS HERE ////////////////////////////////////////////////////////////////////////-->
+                    <div id="googleMap" style="width:100%;height:300px;"></div>
+                    <!--  TEST CODE ENDS HERE ////////////////////////////////////////////////////////////////////////-->
+               
+                </form>
+                <button id="submitBtn" class="Btn lostBtn">Search</button>
+            </div>
+        </div>
+
+        <!-- <p id="cookieMessage">
+      My cookie is
+    </p> -->
+    </main>
+</body>
+
+</html>
