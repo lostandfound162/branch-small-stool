@@ -137,11 +137,19 @@ script.async = true;
 
 document.head.appendChild(script);
 
-var map, marker, infoWindow, lastAddress;
+var map, marker, infowindow, lastAddress;
 
 function moveMarker() {
-  console.log('test');
   marker.setPosition(infowindow.getPosition());
+  infowindow.open(map, marker);
+  infowindow.close();
+  console.log('before', item.location);
+  document.getElementById('location').value = lastAddress;
+  item.location = lastAddress;
+  console.log('after', item.location);
+}
+
+function moveSearchMarker() {
   infowindow.open(map, marker);
   infowindow.close();
   document.getElementById('location').value = lastAddress;
@@ -162,10 +170,14 @@ function search() {
       let name = data.candidates[0].name;
       
       document.getElementById('location').value = name + ", " + address;
+      lastAddress = name + ", " + address;
+      item.location = lastAddress;
       
       marker.setPosition(location);
       marker.setMap(map);
       map.setCenter(location);
+      
+      moveSearchMarker();
     }
   });
 

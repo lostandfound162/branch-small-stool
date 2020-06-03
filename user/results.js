@@ -42,6 +42,17 @@ function getData() {
 
 // PUT ALL DATA ONTO RESULTS SCREEN
 function displayData(listOfData) {
+    //May 10th - May 17th, Phones, Quad (Default)
+    let resultBar = getSearchedDate(item.start) + ' - ' + getSearchedDate(item.end);
+    if (item.category !== '') {
+        resultBar += '. ' + item.category;
+    }
+    if (item.location !== '') {
+        resultBar += '. ' + item.location;
+    }
+    
+    document.querySelector('#searchDesc').textContent = resultBar;
+    
     let results = document.querySelector('#results');
     for (let i = 0; i < listOfData.length; i++) {
         results.appendChild(buildItem(listOfData[i], i + 1));
@@ -134,6 +145,13 @@ function buildItem(data, id) {
 
     // return Item
     return container;
+}
+
+function getSearchedDate(milliTime) {
+  let options = {month: 'long', day: 'numeric'};
+  let day = new Date(milliTime);
+  
+  return day.toLocaleDateString('en-US', options);
 }
 
 function getFormattedDate(milliTime) {
