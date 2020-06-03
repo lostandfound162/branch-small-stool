@@ -105,7 +105,6 @@ document.head.appendChild(script);
 var map, marker, infowindow, lastAddress;
 
 function moveMarker() {
-  console.log('test');
   marker.setPosition(infowindow.getPosition());
   infowindow.open(map, marker);
   infowindow.close();
@@ -113,6 +112,13 @@ function moveMarker() {
   document.getElementById('location').value = lastAddress;
   item.location = lastAddress;
   console.log('after', item.location);
+}
+
+function moveSearchMarker() {
+  infowindow.open(map, marker);
+  infowindow.close();
+  document.getElementById('location').value = lastAddress;
+  item.location = lastAddress;
 }
 
 
@@ -136,7 +142,7 @@ function search() {
       marker.setMap(map);
       map.setCenter(location);
       
-      moveMarker();
+      moveSearchMarker();
     }
   });
 

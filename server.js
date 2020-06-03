@@ -46,7 +46,7 @@ const expressSession = require('express-session');
 //====================== BUILDING DATABASE ========================================================
 
 // Interface for DB
-const LostAndFoundDB = new sqlite3.Database('temp005.db');
+const LostAndFoundDB = new sqlite3.Database('temp006.db');
 
 // Actual table creation; only runs if "lostAndFound.db" is not found or empty
 let cmd = " SELECT name FROM sqlite_master WHERE type='table' AND name='lostTable' ";
