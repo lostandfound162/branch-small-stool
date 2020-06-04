@@ -186,3 +186,14 @@ function getQueryString() {
   
   return `?type=${item.type}&start=${item.start}&end=${item.end}&search=${item.search}&category=${item.category}&location=${item.location}`;
 }
+
+
+// onclick="window.location.href = './seekerSearch.html'"
+
+document.querySelector('#editBtn').addEventListener('click', () => {
+  if (window.sessionStorage.getItem('type') == 'lost') {
+      window.location.href = './seekerSearch.html';
+  } else {
+      window.location.href = './finderSearch.html';
+  }
+});
