@@ -12,32 +12,54 @@
 // // Remove all saved data from sessionStorage
 // sessionStorage.clear();
 
+let item = {
+  'location': '',
+  'dummy': ''
+}
+
 // define variables that reference elements on our page
 const submitButton = document.getElementById("submitBtn");
 
 submitButton.addEventListener("click", storeData);
 
 function storeData() {
-  let loc = document.getElementById("location").value;
   let cat = document.getElementById("categories").value;
   let des = document.getElementById("search").value;
   
   let startDate = new Date(document.querySelector('#postdate1').value + "T"+ document.querySelector('#posttime1').value + ":00");
   let endDate = new Date(document.querySelector('#postdate2').value + "T"+ document.querySelector('#posttime2').value + ":00");
   
+  //Time Range Validation
+  let startTimeNum = startDate.getTime();
+  let endTimeNum = endDate.getTime();
+  
+  const errormsg = document.querySelector('#errorMsg');
+  
+  if(cat === "Select Category") {
+    cat = "";
+  }
+  
   window.sessionStorage.setItem('startDate', startDate.getTime());
   window.sessionStorage.setItem('endDate', endDate.getTime());
   window.sessionStorage.setItem('type', 'found');
-  window.sessionStorage.setItem('location', loc);
+  window.sessionStorage.setItem('location', item.location);
   window.sessionStorage.setItem('categories', cat);
   window.sessionStorage.setItem('search', des);
+  
+  if((endTimeNum - startTimeNum) < 0) {
+    errormsg.textContent = 'Start Date must be before End Date';
+    errormsg.style.display = 'block';
+  } else {
+    window.location.href = './results.html';
+  }
 }
+
 
 setDefaultDates();
 function setDefaultDates() {
   // Set date & time option on Page 2 to current date & time
   let date = new Date();
-  date.setDate(date.getDate() - 2)
+  date.setDate(date.getDate() - 2);
   let day = date.getDate();
   let month = date.getMonth() + 1;
   let year = date.getFullYear();
@@ -54,7 +76,7 @@ function setDefaultDates() {
   
   
   date = new Date();
-  date.setDate(date.getDate() + 2)
+  date.setDate(date.getDate() + 1)
   day = date.getDate();
   month = date.getMonth() + 1;
   year = date.getFullYear();

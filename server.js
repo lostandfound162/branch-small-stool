@@ -5,8 +5,12 @@
   - input validation
   
     Database creation and input into the database 
-    - (step 6) change post->insert to post->insert + post->update
     - (step 9) send images to ecs162.org and delete them from images folder
+
+  DONE:
+  - Login with ucd email Do step 8 in step-step 
+  - send error message to non uc davis logins from requireUser()
+    - res.redirect('/?email=notUCD');
 
   - database filtered query
     - date and time filtering
@@ -15,15 +19,6 @@
   - Add google maps
       - CHANGE HOW LOCATION IS STORED ON THE CLIENT SIDE
       - TIME IS OFF BETWEEN SAVING IT ON THE SCREEN AND PULLING IT
-
-
-
-
-  DONE:
-  - Login with ucd email Do step 8 in step-step 
-  - send error message to non uc davis logins from requireUser()
-    - res.redirect('/?email=notUCD');
-
 
 */
 
@@ -268,6 +263,7 @@ app.post('/saveData', function (req, res) {
 
 // Handle a get request for retrieving lost and found items
 app.get('/showItems', function (req, res) {
+  // Commands for keyword searching in title and description: 
     console.log('\n\n\n\n\n\n\n\n\n\n\n\n\n\nSHOW ITEMS: ', req.query);
     cmd = `SELECT * FROM lostTable WHERE itemType='${req.query.type}'`;
     if (req.query.category !== '') {
@@ -276,7 +272,11 @@ app.get('/showItems', function (req, res) {
     if (req.query.location !== '') {
       cmd += ` AND location='${req.query.location}'`;
     }
+    if (req.query.search !== '') {
+      cmd += ` AND title LIKE '%${req.query.search}%'`;
+    }
     cmd += ` AND date BETWEEN ${parseInt(req.query.start, 10)} AND ${parseInt(req.query.end, 10)} ;`;
+  console.log(cmd);
     LostAndFoundDB.all(cmd, function (err, val) {
         console.log('value:', val);
         if (err) {

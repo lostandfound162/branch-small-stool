@@ -29,6 +29,7 @@ body {
     justify-items: center;
     align-items: flex-start;
     padding-top: 5em;
+    padding-bottom: 5em;
     width: 80%;
     max-width: 700px;
     height: auto;
@@ -148,7 +149,7 @@ body {
 
   #results {
       display: flex;
-      flex-direction: column;
+      flex-direction: column-reverse;
       width: 100%
   }
 
@@ -192,3 +193,16 @@ body {
       font-weight: bold;
       padding-right: 10px;
   }
+
+
+
+@media only screen and (max-width: 769px) {
+
+  main {
+    width: 90%;
+  }
+  
+  .formPage{
+      padding: 20px 30px;
+  }
+}
