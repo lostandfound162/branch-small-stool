@@ -187,6 +187,8 @@ body {
 
   .expandedContent {
       font-size: 14px;
+      display: flex;
+      flex-direction: row;
   }
 
   .tableHeader {
@@ -194,6 +196,13 @@ body {
       padding-right: 10px;
   }
 
+  .itemImage{
+      height: 200px;
+      width: 150px;
+      object-fit: cover;
+      display: block;
+      margin-right: 10px;
+  }
 
 
 @media only screen and (max-width: 769px) {
