@@ -27,6 +27,7 @@ const bodyParser = require('body-parser');
 const assets = require('./assets');
 const multer = require('multer');
 const FormData = require("form-data");
+const fs = require("fs");
 const sqlite3 = require('sqlite3');  // we'll need this later
 const request = require('request');
 const passport = require('passport');
@@ -236,8 +237,8 @@ app.post('/uploadImage', upload.single('newImage'), function (request, response)
     if (request.file) {
         // file is automatically stored in /images with multer
         console.log("reqfile: ", request.file);
-        // sendMediaStore(filename, request, response)
-        response.end("recieved " + request.file.originalname);
+        sendMediaStore(filename, request, response)
+        //response.end("recieved " + request.file.originalname);
     }
     else throw 'error';
 });
@@ -405,7 +406,7 @@ function requireLogin (req, res, next) {
 
 
 
-/*
+
 // function called when the button is pushed
 // handles the upload to the media storage API
 function sendMediaStore(filename, serverRequest, serverResponse) {
@@ -460,4 +461,4 @@ function sendMediaStore(filename, serverRequest, serverResponse) {
       });
     }
   }
-  */
+  

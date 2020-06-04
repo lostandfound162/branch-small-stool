@@ -2,12 +2,7 @@
 let listOfItems = []
 let item = {
     'type': '',
-    //'title': '',
     'category': '',
-    //'desc': '',
-    //'img': '',
-    //'date': '',
-    //'time': '',
     'location': '',
     'search': '',
     'start': '',
@@ -66,6 +61,8 @@ function buildItem(data, id) {
     let title = document.createElement("DIV");
     let expBtn = document.createElement("DIV");
     let expandedView = document.createElement("DIV");
+    let contentWrap = document.createElement("DIV");
+    let image = document.createElement("IMG");
     let table = document.createElement("TABLE");
     let row = null;
     let cell = null;
@@ -109,14 +106,28 @@ function buildItem(data, id) {
     cell.textContent = getFormattedDate(data.date);
 
     // Add table to Expanded View
-    expandedView.appendChild(table);
+    contentWrap.appendChild(table);
 
     // Set Expanded View Description
     desc.textContent = data.description;
 
+  
+  
     // Add Descirption to Expanded View
-    expandedView.appendChild(desc);
+    contentWrap.appendChild(desc);
+    contentWrap.classList.add("contentWrap");
 
+    //  \/  \/  ADD LOGIC FOR INSERTING IMAGE  \/  \/
+    if (data.imageURL !== "") {
+        image.src = 'http://ecs162.org:3000/images/oaburney/' + data.imageURL;
+        image.classList.add("itemImage");
+        expandedView.appendChild(image);
+    }
+  
+  
+    // Add Content to Expanded View
+    expandedView.appendChild(contentWrap);
+  
     // Hide Expanded Content and attach class
     expandedView.classList.add("expandedContent");
     expandedView.style.display = "none";
@@ -134,7 +145,7 @@ function buildItem(data, id) {
         } else {
             container.style.flexDirection = "column";
             container.querySelector('.expandBtn').textContent = 'Less';
-            expandedView.style.display = "block";
+            expandedView.style.display = "flex";
         }
     });
 
@@ -175,9 +186,3 @@ function getQueryString() {
   
   return `?type=${item.type}&start=${item.start}&end=${item.end}&search=${item.search}&category=${item.category}&location=${item.location}`;
 }
-//${item.type}&start=${item.start}&end=${item.end}&search=${item.search}&category=${item.category}&location=${item.location}`;
-//}
-
-document.querySelector('#editBtn').addeventListener('click', () => {
-  console.log('');
-});
