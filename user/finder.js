@@ -27,7 +27,7 @@ document.querySelector('#nextBtn').addEventListener('click', () => {
         document.querySelector('#pg2').classList.remove('hidePage');
 
         // Set date & time option on Page 2 to current date & time
-                let date = new Date();
+        let date = new Date();
         let day = date.getDate();
         let month = date.getMonth() + 1;
         let year = date.getFullYear();
@@ -84,17 +84,8 @@ document.querySelector('#submitBtn').addEventListener('click', () => {
 
     // Save Date and Time into JSON item
   
-    let today = new Date(document.querySelector('#postdate').value + "T"+ document.querySelector('#posttime').value + ":00") ;
-    
+    let today = new Date(document.querySelector('#postdate').value + "T"+ document.querySelector('#posttime').value + ":00") ;  
     item.date = today.getTime();
-    // item.location = document.querySelector('#location').value;
-
-  
-  
-  // delete later
-  let options = {month: 'long', day: 'numeric', hour: 'numeric'};
-  console.log(today.toLocaleDateString('en-US', options), today.getHours(), today.getMinutes());
-  
   
     // \/  \/  SEND DATA TO SERVER BELOW  \/  \/
 
@@ -117,6 +108,7 @@ document.querySelector('#submitBtn').addEventListener('click', () => {
     document.querySelector('#categories').value = 'Select Category';
     document.querySelector('#desc').value = '';
     document.querySelector('#imgUpload').value = '';
+    document.querySelector('#location').value = '';
 
     // RESET Item Options After Submitting
     item.title = '';

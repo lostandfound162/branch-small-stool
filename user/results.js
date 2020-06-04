@@ -45,10 +45,10 @@ function displayData(listOfData) {
     //May 10th - May 17th, Phones, Quad (Default)
     let resultBar = getSearchedDate(item.start) + ' - ' + getSearchedDate(item.end);
     if (item.category !== '') {
-        resultBar += '. ' + item.category;
+        resultBar += ', ' + item.category;
     }
     if (item.location !== '') {
-        resultBar += '. ' + item.location;
+        resultBar += ', ' + item.location.substr(0, item.location.indexOf(","));
     }
     
     document.querySelector('#searchDesc').textContent = resultBar;
@@ -98,7 +98,7 @@ function buildItem(data, id) {
     cell.classList.add('tableHeader');
     cell.textContent = "Location";
     cell = row.insertCell(-1);
-    cell.textContent = data.location;
+    cell.textContent = data.location.substr(0, data.location.indexOf(","));
 
     // Set Expanded View Category
     row = table.insertRow(-1);
@@ -172,8 +172,12 @@ function getQueryString() {
   item.end = parseInt(window.sessionStorage.getItem('endDate'), 10);
   
   console.log("Data to query", item);
-  //send request to server here
   
   return `?type=${item.type}&start=${item.start}&end=${item.end}&search=${item.search}&category=${item.category}&location=${item.location}`;
 }
+//${item.type}&start=${item.start}&end=${item.end}&search=${item.search}&category=${item.category}&location=${item.location}`;
+//}
 
+document.querySelector('#editBtn').addeventListener('click', () => {
+  console.log('');
+});
