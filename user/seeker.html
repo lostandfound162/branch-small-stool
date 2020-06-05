@@ -29,7 +29,7 @@
 
         <div class="formBook">
             <div id="pg1" class="formPage">
-                <form>
+                <form autocomplete="off">
                     <label for="title">Title</label>
                     <input type="text" id="title" name="title">
                     <br/>
@@ -61,7 +61,7 @@
                 <button id="nextBtn" class="Btn lostBtn">Next</button>
             </div>
             <div id="pg2" class="formPage hidePage">
-                <form>
+                <form autocomplete="off">
                     <label for="foundtime">Date & Time</label>
                     <span>
                         <input type="date" id="postdate" name="postdate" value="2020-05-21">
@@ -70,8 +70,10 @@
                     <br/>
                   
                     <label for="location">Location</label>
-                    <input type="text" id="location" name="location" placeholder="Search Location..." onkeypress="return searchKeyPress(event);">
-                    <input type="button" id="fakeBtn" style="display: none;" value="Search" onclick="search();" />
+                    <div class="autocomplete">
+                        <input type="text" id="location" name="location" placeholder="Search Location..." onkeypress="return searchKeyPress(event);">
+                        <input type="button" id="fakeBtn" style="display: none;" value="Search" onclick="search();" />
+                    </div>
                     <br/>
                   
                      <!--  TEST CODE STARTS HERE ////////////////////////////////////////////////////////////////////////-->
