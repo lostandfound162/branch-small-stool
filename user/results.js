@@ -96,6 +96,9 @@ function buildItem(data, id) {
     cell.textContent = "Location";
     cell = row.insertCell(-1);
     cell.textContent = data.location.substr(0, data.location.indexOf(","));
+    if (cell.textContent === '') {
+        cell.textContent = 'Davis';
+    }
 
     // Set Expanded View Category
     row = table.insertRow(-1);

@@ -47,7 +47,7 @@ function storeData() {
   window.sessionStorage.setItem('search', des);
   
   if((endTimeNum - startTimeNum) < 0) {
-    errormsg.textContent = 'Start Date must be before End Date';
+    errormsg.textContent = String.fromCharCode(9785) + ' Start Date must be before End Date';
     errormsg.style.display = 'block';
   } else {
     window.location.href = './results.html';

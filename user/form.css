@@ -17,9 +17,10 @@ body {
     position: absolute;
     display: none;
     top: 0;
-    right: 0;
+    left: 0;
+    right: auto;
     padding: 10px 20px;
-    color: red;
+    color: white;
     background-color: transparent;
 }
 

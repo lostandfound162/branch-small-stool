@@ -27,21 +27,24 @@ body {
 
 #errorMsg {
     font-family: 'Montserrat', sans-serif;
+    white-space: pre-line;
     position: absolute;
     display: none;
     top: 0;
     right: 0;
     padding: 10px 20px;
-    color: red;
+    color: white;
     background-color: transparent;
 }
 
 .top-left {
     height: 50vh;
+    position: relative;
 }
 
 .bottom-right {
     height: 50vh;
+    position: relative;
 }
 
 main {
@@ -84,6 +87,7 @@ a {
     display: flex;
     flex-direction: row;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 #googleLogo {
