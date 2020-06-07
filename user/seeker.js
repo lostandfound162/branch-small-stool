@@ -14,11 +14,27 @@ let item = {
 // SAVE PAGE 1 FORM DATA
 document.querySelector('#nextBtn').addEventListener('click', () => {
     
+    const errormsg = document.querySelector('#errorMsg');
+  
     // Save Page 1 form values into item
     item.title = document.querySelector('#title').value;
     item.category = document.querySelector('#categories').value;
     item.desc = document.querySelector('#desc').value;
-
+  
+  
+    // Ouput messages to inform the client input fields were not filled
+    let cat = '';
+    if (item.title === '') { 
+        cat += String.fromCharCode(9785) + ' Title is not specified' + '\n'; }
+    if (item.category === 'Select Category') {  
+        cat += String.fromCharCode(9785) + ' Category is not specified' + '\n'; }
+    if (item.desc === '') {  
+        cat += String.fromCharCode(9785) + ' Description is not specified'; 
+    }
+    errormsg.textContent = cat;
+    errormsg.style.display = 'block';
+  
+  
     // Validate all input fields except img filechooser were filled in
     if (!(item.title === '' || item.category === 'Select Category' || item.desc === '')) {
         
@@ -46,10 +62,7 @@ document.querySelector('#nextBtn').addEventListener('click', () => {
         console.log(item, date.getHours());
     }
 
-    // Ouput messages to inform the client input fields were not filled
-    if (item.title === '') { console.log('Title is not specified'); }
-    if (item.category === 'Select Category') { console.log('Category is not specified'); }
-    if (item.desc === '') { console.log('Description is not specified'); }
+  
 });
 
 // UPLOAD IMAGE
@@ -78,17 +91,15 @@ document.querySelector('#imgUpload').addEventListener('change', () => {
 // SUBMIT LOST/FOUND ITEM
 document.querySelector('#submitBtn').addEventListener('click', () => {
 
-    // Change Back to Page 1
-    document.querySelector('#pg1').classList.remove('hidePage');
-    document.querySelector('#pg2').classList.add('hidePage');
-
-    // Save Date and Time into JSON item
+    // Error Message handlers
+    const errormsg = document.querySelector('#errorMsg');
+    let cat = '';
   
+    // Save Date and Time into JSON item
     let today = new Date(document.querySelector('#postdate').value + "T"+ document.querySelector('#posttime').value + ":00") ;  
     item.date = today.getTime();
   
-    // \/  \/  SEND DATA TO SERVER BELOW  \/  \/
-
+    // CALLBACK FROM SERVER FOR SENDING DATA
     // new HttpRequest instance 
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("POST", '/saveData');
@@ -98,26 +109,38 @@ document.querySelector('#submitBtn').addEventListener('click', () => {
     xmlhttp.onloadend = function (e) {
         let data = JSON.parse(xmlhttp.responseText);
     }
+  
     // Send off the HTTP request
-    xmlhttp.send(JSON.stringify(item));
+    if (item.location != '') {
+        // SEND DATA TO SERVER
+        xmlhttp.send(JSON.stringify(item));
 
-    // /\  /\  SEND DATA TO SERVER ABOVE  /\  /\
+        // Change Back to Page 1
+        document.querySelector('#pg1').classList.remove('hidePage');
+        document.querySelector('#pg2').classList.add('hidePage');
+      
+        // RESET Page 1 Form Input Values
+        document.querySelector('#title').value = '';
+        document.querySelector('#categories').value = 'Select Category';
+        document.querySelector('#desc').value = '';
+        document.querySelector('#imgUpload').value = '';
+        document.querySelector('#location').value = '';
 
-    // RESET Page 1 Form Input Values
-    document.querySelector('#title').value = '';
-    document.querySelector('#categories').value = 'Select Category';
-    document.querySelector('#desc').value = '';
-    document.querySelector('#imgUpload').value = '';
-    document.querySelector('#location').value = '';
-
-    // RESET Item Options After Submitting
-    item.title = '';
-    item.category = 'Select Category';
-    item.desc = '';
-    item.img = '';
-    item.date = '';
-    item.time = '';
-    item.location = '';
+        // RESET Item Options After Submitting
+        item.title = '';
+        item.category = 'Select Category';
+        item.desc = '';
+        item.img = '';
+        item.date = '';
+        item.time = '';
+        item.location = '';
+    } else {
+        // Ouput messages to inform the client input fields were not filled
+        cat += String.fromCharCode(9785) + ' Location is not specified';
+        errormsg.textContent = cat;
+        errormsg.style.display = 'block';
+    }
+    
 });
 
 //====================================== MAP TEST CODE BELOW =========================================================

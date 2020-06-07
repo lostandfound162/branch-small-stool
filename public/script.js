@@ -8,6 +8,6 @@ const emailError = urlParams.get('email')
 const errormsg = document.querySelector('#errorMsg');
 
 if (emailError === 'notUCD') {
-    errormsg.textContent = 'You must use a UC Davis Email to login';
+    errormsg.textContent = String.fromCharCode(9785) + ' You must use a UC Davis Email to login';
     errormsg.style.display = 'block';
 }
