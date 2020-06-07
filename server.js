@@ -205,7 +205,7 @@ app.get('/auth/google', passport.authenticate('google'));
 app.get('/auth/accepted', 
   passport.authenticate('google', {
     successRedirect: '/setcookie', 
-    failureRedirect: '/',
+    failureRedirect: '/?email=notUCD',
     scope: [ 'email', 'profile']
   })
 );
